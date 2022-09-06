@@ -41,3 +41,11 @@ func TestMaxProfit2Case1(t *testing.T) {
 		t.Errorf("max profit should be 3, but got %d", profit)
 	}
 }
+
+func TestMaxProfit3Case1(t *testing.T) {
+	prices := []int{1, 3, 2, 8, 4, 9}
+	profit := maxProfit3(prices, 2)
+	if profit != 8 {
+		t.Errorf("max profit should be 8, but got %d", profit)
+	}
+}

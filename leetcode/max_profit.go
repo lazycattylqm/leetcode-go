@@ -54,3 +54,21 @@ func maxProfit2(prices []int) int {
 	}
 	return max(statusA, max(statusB, statusC))
 }
+
+func maxProfit3(prices []int, fee int) (ans int) {
+	ans = 0
+	buy := 0
+	sell := 0
+	for index, price := range prices {
+		if index == 0 {
+			buy = -price
+			continue
+		}
+		tempBuy := max(buy, sell-price)
+		tempSell := max(sell, buy+price-fee)
+		buy = tempBuy
+		sell = tempSell
+	}
+	ans = max(buy, sell)
+	return
+}
