@@ -30,3 +30,27 @@ func maxNumber(nums1 []int) (ans int) {
 	}
 	return
 }
+
+func maxProfit2(prices []int) int {
+	statusA := 0 // 表示持有股票
+	statusB := 0 //表示不持有 但是在冷冻期
+	statusC := 0 //表示不持有 也不在冷冻期
+	for index, price := range prices {
+		if index == 0 {
+			statusA = -price
+			statusB = 0
+			statusC = 0
+			continue
+		}
+		tempA := max(statusA, statusC-price)
+
+		tempC := max(statusC, statusB)
+
+		tempB := statusA + price
+
+		statusA = tempA
+		statusB = tempB
+		statusC = tempC
+	}
+	return max(statusA, max(statusB, statusC))
+}
