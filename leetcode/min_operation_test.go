@@ -18,3 +18,11 @@ func TestMinOperationCase2(t *testing.T) {
 	}
 
 }
+
+func TestMinOperationCase3(t *testing.T) {
+	s := "0100"
+	ans := minOperationsStr(s)
+	if ans != 1 {
+		t.Errorf("expected 1, got %d", ans)
+	}
+}
